@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= farm.name %></title>
+</head>
+<body>
+         <h1>
+            <%= farm.name %>
+         </h1>
+         <ul>
+            <li>city:  <%= farm.city %></li>
+            <li>Email:<%=farm.email%></li>
+         </ul> 
+         <h2>Products</h2>
+         <ul>
+            <%for (let product of farm.products){%> <!-- //populating the data -->
+               <li><%=product.name%></li>
+            <%}%>
+         </ul>
+         <a href="/farms/<%=farm._id%>/products/new">Add Product!!</a>
+         <a href="/farms">All Products</a>
+       
+         <!-- //if we delete farms the products need to go away deletion mongoose middleware-->
+          <form action="/farms/<%farm._id%>?_method=DELETE" method="POST"  >
+            <button>Delete!!</button>
+          </form>
+</body>
+</html>
